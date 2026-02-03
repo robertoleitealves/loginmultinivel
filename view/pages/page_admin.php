@@ -6,3 +6,4 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_nivel'] !== 'admin') {
 }
 ?>
 <h1>Bem-vindo, Administrador <?php echo $_SESSION['usuario_nome']; ?></h1>
+<a href="../logout.php" class="btn btn-primary">Logout</a>

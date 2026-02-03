@@ -26,11 +26,21 @@ public function post() {
 
     // 5. Chamar o método de salvar no Model
     if ($usuario->NovoUsuario()) {
-        $usuario->Login(); 
+    if ($usuario->Login()) {
+        if (session_status() === PHP_SESSION_NONE) { session_start(); }
+        if ($usuario->nivel === 'admin') {
+            header("Location: ../view/pages/page_admin.php");
+        } else {
+            header("Location: ../view/pages/page_user.php");
+        }
     } else {
-        header("Location: ../view/criarconta.php?error=erro_ao_salvar");
+        // Se o login falhar por algum motivo, volta para a index
+        header("Location: ../view/index.php?success=usuario_criado");
     }
-    exit;
+} else {
+    header("Location: ../view/criarconta.php?error=erro_ao_salvar");
+}
+exit;
 }
 }
 $usuario = new Usuario();

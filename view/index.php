@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Login</title>
 </head>
 
@@ -17,12 +17,18 @@ session_start();
     <h1>Login</h1>
     <form action="../controller/auth.php" method="POST">
         <div class="info">
-            <label class="form-label">Login: </label>
-            <input class="form-control" type="email" name="email" id="email">
-            <label class="form-label">Senha: </label>
-            <input class="form-control" type="password" name="senha" id="senha">
-            <button type="submit" name="entrar">Entrar</button>
-            <a href="../view/pages/criarconta.php" class="btn btn-primary">Criar Conta</a>
+            <div class="data">
+                <label class="form-label">Login: </label>
+                <input class="form-control" type="email" name="email" id="email">
+            </div>
+            <div class="data">
+                <label class="form-label">Senha: </label>
+                <input class="form-control" type="password" name="senha" id="senha">
+            </div>
+            <div class="form-action">
+                <button class="btn-primary" type="submit" name="entrar">Entrar</button>
+                <a href="../view/pages/criarconta.php" class="btn btn-secondary">Criar Conta</a>
+            </div>
         </div>
         <div>
             <?php
