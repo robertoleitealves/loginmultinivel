@@ -106,6 +106,10 @@ class Usuarios
     $id = mysqli_real_escape_string($connect, $this->id);
     $sql = "DELETE FROM usuarios WHERE id = '$this->id'";
     
-    return mysqli_query($connect, $sql);
+     if (mysqli_query($connect, $sql)){
+        return true;
+     } else{
+        return false;
+     };
 }
 }

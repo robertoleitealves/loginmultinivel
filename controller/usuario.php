@@ -2,7 +2,19 @@
 require_once "../class/Usuarios.php";
 class Usuario
 {
-    public function post()
+    function delete()
+    {
+        $usuario = new Usuarios();
+        $usuario->id = $_POST['id'];
+
+        if ($usuario->ExcluirUsuario()) {
+            echo "sucesso"; // O jQuery lerá isso no 'response'
+        } else {
+            echo "erro";
+        }
+        exit; // Interrompe a execução para não processar mais nada
+    }
+    function post()
     {
         // 1. Verificar se todos os campos foram preenchidos
         if (empty($_POST['nome']) || empty($_POST['email']) || empty($_POST['senha']) || empty($_POST['confirmsenha'])) {
@@ -46,8 +58,10 @@ class Usuario
 $usuario = new Usuario();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario->post();
+    // Se vier 'acao' via POST e for 'excluir', chama o delete
+    if (isset($_POST['acao']) && $_POST['acao'] === 'delete') {
+        $usuario->delete();
+    } else {
+        $usuario->post();
+    }
 }
-// else {
-//     $usuario->get();
-// }

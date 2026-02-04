@@ -18,6 +18,7 @@ include '../objetos/header.php';
 include '../objetos/sidebar.php';
 ?>
 <main class="content">
+    <input type="hidden" name="rota" id="rota" value="<?php echo BASE_URL; ?>">
     <h1>Lista de Usuários</h1>
 
     <table border="2">
@@ -32,18 +33,16 @@ include '../objetos/sidebar.php';
         <tbody>
             <?php foreach ($lista as $usuario): ?>
                 <tr>
-                    <td><a href="editar_usuario.php?id=<?php echo $usuario['id']; ?>"
-                            style="background-color: #2196F3; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">
+                    <td>
+                        <a class="btn-editar" href="editarperfil.php?email=<?php echo $usuario['email']; ?>"                            >
                             Editar
                         </a>
-
-                        <a href="../controller/usuario.php?acao=excluir&id=<?php echo $usuario['id']; ?>"
-                            onclick="return confirm('Tem certeza que deseja excluir este usuário?');"
-                            style="background-color: #f44336; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; margin-left: 5px;">
+                    <?php if ($_SESSION['usuario_nivel'] == 'admin') {?>
+                        <a class="btn-excluir" data-id="<?php echo $usuario['id']; ?>"                            >
                             Excluir
                         </a>
+                        <?php }?>
                     </td>
-                    <td><?php echo $usuario['nome']; ?></td>
                     <td><?php echo $usuario['nome']; ?></td>
                     <td><?php echo $usuario['email']; ?></td>
                     <td><?php echo $usuario['nivel']; ?></td>
@@ -52,3 +51,4 @@ include '../objetos/sidebar.php';
         </tbody>
     </table>
 </main>
+<script src="<?php echo BASE_URL; ?>js/home.js"></script>

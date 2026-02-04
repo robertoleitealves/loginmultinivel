@@ -94,6 +94,23 @@ form {
     color: var(--primary-color);
 }
 
+.btn-excluir{
+    background-color: #f44336; 
+    color: white; 
+    padding: 5px 10px; 
+    text-decoration: none; 
+    border-radius: 3px; 
+    margin-left: 5px;
+}
+
+.btn-editar{
+    background-color: #2196F3; 
+    color: white; 
+    padding: 5px 10px; 
+    text-decoration: none; 
+    border-radius: 3px;
+}
+
 .btn-primary:hover,
 .btn-secondary:hover {
     filter: brightness(1.2);
@@ -102,4 +119,8 @@ form {
 .btn-primary:active,
 .btn-secondary:active {
     transform: scale(0.98);
+}
+
+td{
+    padding: 10px;
 }
