@@ -5,6 +5,14 @@
     --input-bg: #e8f0fe;
 }
 
+aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+}
+content { margin-left: 250px; }
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f9;
@@ -20,7 +28,7 @@ form {
     background-color: var(--bg-form);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 350px;
     box-sizing: border-box;
@@ -55,11 +63,13 @@ form {
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaço uniforme entre os botões */
+    gap: 10px;
+    /* Espaço uniforme entre os botões */
 }
 
 /* Base para botões e links */
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     width: 100%;
     padding: 14px;
     border-radius: 6px;
@@ -84,10 +94,12 @@ form {
     color: var(--primary-color);
 }
 
-.btn-primary:hover, .btn-secondary:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
     filter: brightness(1.2);
 }
 
-.btn-primary:active, .btn-secondary:active {
+.btn-primary:active,
+.btn-secondary:active {
     transform: scale(0.98);
 }
