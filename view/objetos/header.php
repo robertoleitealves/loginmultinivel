@@ -22,7 +22,9 @@ $nivel = ($_SESSION['usuario_nivel'] == 'user') ? "usuário" : "administrador";
    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <header>
+    <header class="main-header">
         <h1>Bem-vindo, <?php echo $nivel." ". $usuario; ?></h1>
-        <a href="../logout.php" >Logout</a>
+        
     </header>
+
+    <div class="main-wrapper">

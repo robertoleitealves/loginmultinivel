@@ -14,9 +14,9 @@ class Usuarios
         include __DIR__ . '/../db/db_connect.php';
         $email = '';
 
-        if ($_SESSION['usuario_nivel'] != "admin" && $this->email <> ""){
+        if ($_SESSION['usuario_nivel'] != "admin" && $this->email <> "") {
             $email = $_SESSION['usuario_email'];
-        } else if ($this->email <> ""){
+        } else if ($this->email <> "") {
             $email = $this->email;
         }
 
@@ -25,11 +25,11 @@ class Usuarios
         }
 
         $sql = "SELECT * FROM usuarios";
-        
-        if ($email <> ""){
+
+        if ($email <> "") {
             $sql .= "   WHERE email = '$email'";
         }
-        
+
         $resultado = mysqli_query($connect, $sql);
 
 
@@ -100,16 +100,45 @@ class Usuarios
         }
     }
 
-    public function ExcluirUsuario() {
-    include __DIR__ . '/../db/db_connect.php';
-    
-    $id = mysqli_real_escape_string($connect, $this->id);
-    $sql = "DELETE FROM usuarios WHERE id = '$this->id'";
-    
-     if (mysqli_query($connect, $sql)){
-        return true;
-     } else{
-        return false;
-     };
-}
+    public function AtualizaUsuario()
+    {
+        include __DIR__ . '/../db/db_connect.php';
+
+
+        // 1. Sanitização para evitar SQL Injection
+        $id = $this->id;
+        $nome = mysqli_real_escape_string($connect, $this->nome);
+        $email = mysqli_real_escape_string($connect, $this->email);
+        $senha = $this->senha; // Já deve vir com password_hash do Controller
+        $nivel = mysqli_real_escape_string($connect, $this->nivel);
+
+        // 2. Comando SQL
+        $sql = "UPDATE  usuarios 
+                SET     nome = '$nome', email = '$email', senha = '$senha', nivel = '$nivel' 
+                WHERE id = '$id';";
+
+        // 3. Execução
+        if (mysqli_query($connect, $sql)) {
+            $this->id = mysqli_insert_id($connect);
+            return true;
+        } else {
+            // Log de erro para o desenvolvedor
+            error_log("Erro no MySQL: " . mysqli_error($connect));
+            return false;
+        }
+    }
+
+    public function ExcluirUsuario()
+    {
+        include __DIR__ . '/../db/db_connect.php';
+
+        $id = mysqli_real_escape_string($connect, $this->id);
+        $sql = "DELETE FROM usuarios WHERE id = '$this->id'";
+
+        if (mysqli_query($connect, $sql)) {
+            return true;
+        } else {
+            return false;
+        };
+    }
 }

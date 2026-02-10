@@ -25,7 +25,7 @@
                 <option value="user">Usuário</option>
                 <option value="admin">Administrador</option>
             </select>
-            <button type="submit" name="confirmar">Confirmar</button>
+            <button type="submit" class="btn-primary" name="confirmar">Confirmar</button>
         </div>
         <div>
             <?php

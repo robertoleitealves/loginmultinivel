@@ -5,13 +5,88 @@
     --input-bg: #e8f0fe;
 }
 
-aside {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
+/* Remove margens padrão do navegador */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
-content { margin-left: 250px; }
+
+/* 1. Header fixo no topo */
+.main-header {
+    height: 60px;
+    width: 100%;
+    background: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* 2. O container que alinha Menu e Conteúdo lado a lado */
+.main-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    /* Ocupa o resto da tela */
+
+}
+
+/* 3. Estilo do Menu Lateral */
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background: #333;
+    border-right: 1px solid #ccc;
+    /* Removemos qualquer margem externa */
+    margin: 0;
+    padding-top: 20px;
+    /* Espaço apenas no topo para os links */
+}
+
+/* Remove as bolinhas e o recuo padrão da lista do menu */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: white;
+    width: 100%;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* Área de conteúdo: ocupa todo o espaço que sobra */
+.content {
+    flex-grow: 1;
+    
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centraliza apenas o conteúdo de edição dentro desta área */
+}
+
+/* O quadrado roxo da sua imagem */
+.info {
+    background-color:var(--bg-form);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 400px;
+}
+
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,15 +99,7 @@ body {
     margin: 0;
 }
 
-form {
-    background-color: var(--bg-form);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 350px;
-    box-sizing: border-box;
-}
+
 
 .form-label {
     display: block;
@@ -62,7 +129,7 @@ form {
 .form-action {
     margin-top: 25px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     /* Espaço uniforme entre os botões */
 }
@@ -70,7 +137,7 @@ form {
 /* Base para botões e links */
 .btn-primary,
 .btn-secondary {
-    width: 100%;
+    width: 50%;
     padding: 14px;
     border-radius: 6px;
     font-weight: bold;
@@ -94,20 +161,20 @@ form {
     color: var(--primary-color);
 }
 
-.btn-excluir{
-    background-color: #f44336; 
-    color: white; 
-    padding: 5px 10px; 
-    text-decoration: none; 
-    border-radius: 3px; 
+.btn-excluir {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
     margin-left: 5px;
 }
 
-.btn-editar{
-    background-color: #2196F3; 
-    color: white; 
-    padding: 5px 10px; 
-    text-decoration: none; 
+.btn-editar {
+    background-color: #2196F3;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
     border-radius: 3px;
 }
 
@@ -121,6 +188,6 @@ form {
     transform: scale(0.98);
 }
 
-td{
+td {
     padding: 10px;
 }
